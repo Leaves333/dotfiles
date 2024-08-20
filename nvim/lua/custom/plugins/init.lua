@@ -117,5 +117,5 @@ return {
 	-- },
 
 	-- exciting vimbegood action !!!!
-	"ThePrimeagen/vim-be-good",
+	-- "ThePrimeagen/vim-be-good",
 }
