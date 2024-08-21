@@ -1,0 +1,145 @@
+// Load with --load-config examples/2.jsonc
+// Note that you must replace the image path to an existing image to display it.
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"logo": {
+		"type": "kitty",
+		"source": "~/.config/fastfetch/logo.jpg",
+		//"width": 28,
+		"height": 15,
+		"padding": {
+			"top": 1,
+			"left": 2,
+			"right": 2
+		}
+	},
+	"display": {
+		"separator": " : ",
+		"constants": [
+			"─────────────────────" // {$1}, used in Custom module
+		],
+		"key": {
+			//"type": "icon",
+			"paddingLeft": 2
+		}
+	},
+	"modules": [
+		{
+			"type": "custom", // HardwareStart
+			// {#1} is equivalent to `\u001b[1m`. {#} is equivalent to `\u001b[m`
+			"format": "┌{$1} {#1}Hardware Information{#} {$1}┐"
+		},
+		//"host",
+		//"cpu",
+		{
+			"type": "cpu",
+			"key": " CPU",
+			"keyColor": "red"
+		},
+		//"gpu",
+		{
+			"type": "gpu",
+			"key": "󰾲 GPU",
+			"keyColor": "red"
+		},
+		//"disk",
+		//"memory",
+		{
+			"type": "memory",
+			"key": " Memory",
+			"keyColor": "green"
+		},
+		//"swap",
+		//"brightness",
+		//"battery",
+		{
+			"type": "battery",
+			"key": " Battery",
+			"keyColor": "green"
+		},
+		//"display",
+		{
+			"type": "display",
+			"key": "󰍹 Display",
+			"keyColor": "yellow"
+		},
+		//"poweradapter",
+		//"bluetooth",
+		//"sound",
+		//"gamepad",
+		{
+			"type": "custom", // SoftwareStart
+			"format": "├{$1} {#1}Software Information{#} {$1}┤"
+		},
+		{
+			"type": "title",
+			"keyIcon": "",
+			"key": " Title", // Title module has no key by default, so that icon is not displayed
+			"keyColor": "blue",
+			"format": "{user-name}@{host-name}"
+		},
+		//"os",
+		{
+			"type": "os",
+			"key": " OS",
+			"keyColor": "blue"
+		},
+		//"kernel",
+		{
+			"type": "kernel",
+			"key": " Kernel",
+			"keyColor": "blue"
+		},
+		//"lm",
+		//"de",
+		{
+			"type": "de",
+			"key": " Desktop",
+			"keyColor": "cyan"
+		},
+		//"wm",
+		//"shell",
+		//"terminal",
+		{
+			"type": "terminal",
+			"key": " Terminal",
+			"keyColor": "cyan"
+		},
+		//"terminalfont",
+		//"theme",
+		//"icons",
+		//"wallpaper",
+		//"packages",
+		{
+			"type": "packages",
+			"key": "󰏖 Packages",
+			"keyColor": "magenta"
+		},
+		//"uptime",
+		{
+			"type": "uptime",
+			"key": " Uptime",
+			"keyColor": "magenta"
+		},
+		//"media",
+		//{
+		//	"type": "localip",
+		//	"compact": true
+		//},
+		//"publicip",
+		//{
+		//	"type": "wifi",
+		//	"format": "{ssid}"
+		//},
+		//"locale",
+		{
+			"type": "custom", // InformationEnd
+			"format": "└{$1}──────────────────────{$1}┘"
+		},
+		{
+			"type": "colors",
+			"paddingLeft": 2,
+			"symbol": "circle"
+		}
+	]
+}
