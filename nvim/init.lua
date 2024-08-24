@@ -83,6 +83,10 @@ vim.opt.scrolloff = 5
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
 
+-- remap H and L to start/end of line
+-- vim.keymap.set("n", "H", "_")
+-- vim.keymap.set("n", "L", "$")
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")

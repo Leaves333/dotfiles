@@ -74,7 +74,7 @@
 		{
 			"type": "title",
 			"keyIcon": "",
-			"key": " Title", // Title module has no key by default, so that icon is not displayed
+			"key": " User", // Title module has no key by default, so that icon is not displayed
 			"keyColor": "blue",
 			"format": "{user-name}@{host-name}"
 		},
