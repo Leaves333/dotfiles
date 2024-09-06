@@ -56,6 +56,16 @@ return {
 				min_chars = 2,
 			},
 
+			templates = {
+				folder = "templates",
+				date_format = "%Y-%m-%d",
+				time_format = "%H:%M",
+			},
+
+			-- Optional, boolean or a function that takes a filename and returns a boolean.
+			-- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
+			disable_frontmatter = true,
+
 			daily_notes = {
 				-- Optional, if you keep daily notes in a separate directory.
 				folder = "dailies",

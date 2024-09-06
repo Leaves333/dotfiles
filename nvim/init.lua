@@ -91,6 +91,11 @@ vim.keymap.set("n", "<leader>p", '"+p')
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- set obsidian.nvim keybinds
+vim.keymap.set("n", "<A-t>", ":ObsidianTemplate<CR>")
+vim.keymap.set("n", "<A-d>", ":ObsidianToday<CR>")
+vim.keymap.set("n", "<A-b>", ":ObsidianBacklinks<CR>")
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -508,7 +513,7 @@ require("lazy").setup({
 				pyright = {},
 				-- basedpyright = {},
 				-- pylsp = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -827,6 +832,7 @@ require("lazy").setup({
 				"java",
 				"cpp",
 				"python",
+				"rust",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
