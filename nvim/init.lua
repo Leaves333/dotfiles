@@ -38,7 +38,7 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
 -- enable hiding characters for obsidian.nvim to function
-vim.o.conceallevel = 1
+-- vim.o.conceallevel = 1
 
 -- Save undo history
 vim.opt.undofile = true

@@ -8,7 +8,7 @@
 #waybar {
   background: transparent;
   color: @text;
-  margin: 5px 5px;
+  margin: 0 5px;
 }
 
 window#waybar {
@@ -32,6 +32,7 @@ window#waybar.solo {
 }
 */
 
+/*
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -40,6 +41,7 @@ window#waybar.chromium {
     background-color: #000000;
     border: none;
 }
+*/
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
@@ -129,13 +131,13 @@ button:hover {
     /*padding: 0 10px;*/
     /*color: #ffffff;*/
 	background-color: @surface0;
-    padding: 0.5rem 1rem;
-    /*margin: 5px 0;*/
+    padding: 10 1rem;
+    margin: 0 0px;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 0px;
 }
 
 #clock {
