@@ -9,7 +9,7 @@
 	font-family: 'Noto Sans M Nerd Font Mono', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
-  color: @subtext1;
+  color: @text;
   background: @mantle;
 }
 
@@ -20,7 +20,7 @@
 #workspaces button {
   margin: 4px 0;
   padding: 0 4px;
-  color: @surface2;
+  color: @text;
 }
 
 #workspaces button.visible {
@@ -28,22 +28,28 @@
 
 #workspaces button.active {
   border-radius: 4px;
-  background-color: @overlay1;
+  color: @mantle;
+  background-color: @lavender;
+}
+
+#workspaces button:hover {
+  border-radius: 4px;
+  color: @mantle;
 }
 
 #workspaces button.urgent {
-  color: rgba(238, 46, 36, 1);
+  color: @red;
 }
 
 #tray {
   margin: 4px 4px 4px 4px;
   border-radius: 4px;
-  background-color: @overlay1;
+  background-color: @overlay0;
 }
 
 #tray * {
   padding: 0 6px;
-  border-left: 1px solid @surface1;
+  border-left: 1px solid @mantle;
 }
 
 #tray *:first-child {
@@ -52,10 +58,10 @@
 
 #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language{
   margin: 4px 2px;
-  padding: 0 6px;
+  padding: 0 8px;
   background-color: @surface1;
   border-radius: 4px;
-  min-width: 20px;
+  min-width: 15px;
 }
 
 #pulseaudio.muted {
