@@ -96,6 +96,9 @@ vim.keymap.set("n", "<A-t>", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<A-d>", ":ObsidianToday<CR>")
 vim.keymap.set("n", "<A-b>", ":ObsidianBacklinks<CR>")
 
+-- set obsidian.nvim keybinds
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 

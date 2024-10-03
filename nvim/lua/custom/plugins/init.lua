@@ -18,6 +18,11 @@ return {
 		end,
 	},
 
+	-- undotree????
+	{
+		"mbbill/undotree",
+	},
+
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
@@ -46,6 +51,10 @@ return {
 					name = "obsidian",
 					path = "~/Obsidian",
 				},
+			},
+
+			ui = {
+				enable = false,
 			},
 
 			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
