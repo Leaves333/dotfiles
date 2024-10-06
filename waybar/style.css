@@ -65,11 +65,11 @@
 }
 
 #pulseaudio.muted {
-  color: @lavender;
+  color: @red;
 }
 
 #pulseaudio.bluetooth {
-  color: @lavender;
+  color: @blue;
 }
 
 #clock {

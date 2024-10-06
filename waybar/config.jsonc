@@ -123,12 +123,12 @@
 		"tooltip": false
 	},
 	"memory": {
-		"format": "{}% "
+		"format": "{}% "
 	},
 	"temperature": {
 		// "thermal-zone": 2,
 		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-		"critical-threshold": 60,
+		"critical-threshold": 70,
 		// "format-critical": "{temperatureC}°C {icon}",
 		"format": "{temperatureC}°C {icon}",
 		"format-icons": [
@@ -136,6 +136,7 @@
 			"",
 			"",
 			"",
+			"",
 			"!"
 		]
 	},
@@ -180,9 +181,9 @@
 	"network": {
 		//"interface": "wlan0", // (Optional) To force the use of this interface
 		"format-wifi": "{essid} ",
-		"format-ethernet": "{ipaddr}/{cidr} ",
-		"tooltip-format": "{ifname} via {gwaddr} ",
-		"format-linked": "{ifname} (No IP) ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr}",
+		"format-linked": "{ifname} (No IP)",
 		"format-disconnected": "Disconnected ⚠",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
@@ -190,8 +191,8 @@
 		// "scroll-step": 10, // %, can be a float
 		//"format": "{volume}%{icon} {format_source}",
 		"format": "{volume}% {icon}",
-		"format-bluetooth": "{volume}% {icon}",
-		"format-bluetooth-muted": "󰝟 {icon}",
+		"format-bluetooth": "{volume}% {icon} ",
+		"format-bluetooth-muted": "󰝟 {icon} ",
 		"format-muted": "󰝟 {format_source}",
 		"format-source": "{volume}% ",
 		"format-source-muted": "",
@@ -203,9 +204,9 @@
 			"portable": "",
 			"car": "",
 			"default": [
-				"",
-				"",
-				""
+				"󰕿",
+				"󰖀",
+				"󰕾"
 			]
 		},
 		"on-click": "pavucontrol"
