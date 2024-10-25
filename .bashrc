@@ -27,4 +27,9 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+# set cargo env???
 . "$HOME/.cargo/env"
+
+# init zoxide
+eval "$(zoxide init --cmd cd bash)"
