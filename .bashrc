@@ -33,3 +33,6 @@ unset rc
 
 # init zoxide
 eval "$(zoxide init --cmd cd bash)"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
