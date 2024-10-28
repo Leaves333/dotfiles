@@ -28,11 +28,17 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+# aliases
+alias bcsoundcore="bluetoothctl connect AC:12:2F:92:58:E3"
+
 # set cargo env???
 . "$HOME/.cargo/env"
 
 # init zoxide
 eval "$(zoxide init --cmd cd bash)"
+
+# init starship
+eval "$(starship init bash)"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
