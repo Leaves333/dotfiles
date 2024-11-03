@@ -42,3 +42,6 @@ eval "$(starship init bash)"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
+
+# kitty doesn't work nice with ssh
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"

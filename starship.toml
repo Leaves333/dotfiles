@@ -4,6 +4,8 @@ $hostname\\
 $all
 '''
 
+add_newline = false
+
 [username]
 style_user = 'bold blue'
 style_root = 'bold red'
