@@ -5,6 +5,14 @@
 edit = [
 	{ run = 'nvim "$@"', block = true },
 ]
+image = [
+	{ run = 'imv-dir "$@"', orphan = true },
+]
+
+[open]
+prepend_rules = [
+	{ mime = "image/*", use = "image" },
+]
 
 [preview]
 max_width       = 1200

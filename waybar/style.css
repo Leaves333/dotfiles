@@ -9,83 +9,94 @@
 	font-family: 'Noto Sans M Nerd Font Mono', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
-  color: @text;
-  background: @mantle;
+	color: @text;
+	background: @mantle;
 }
 
 #workspaces {
-  margin: 0 4px;
+	margin: 0 4px;
 }
 
 #workspaces button {
-  margin: 4px 0;
-  padding: 0 4px;
-  color: @text;
+	margin: 4px 0px 5px;
+	padding: 0 4px;
+	color: @pink;
 }
 
 #workspaces button.visible {
 }
 
 #workspaces button.active {
-  border-radius: 4px;
-  color: @mantle;
-  background-color: @lavender;
+	border-radius: 4px;
+	color: @mantle;
+	background-color: @pink;
 }
 
 #workspaces button:hover {
-  border-radius: 4px;
-  color: @mantle;
+	border-radius: 4px;
+	color: @mantle;
 }
 
 #workspaces button.urgent {
-  color: @red;
+  color: @sapphire;
 }
 
 #tray {
-  margin: 4px 4px 4px 4px;
-  border-radius: 4px;
-  background-color: @overlay0;
+	margin: 4px 4px 5px 4px;
+	border-radius: 4px;
+	background-color: @surface0;
 }
 
 #tray * {
-  padding: 0 6px;
-  border-left: 1px solid @mantle;
+	padding: 0 6px;
+	border-left: 1px solid @mantle;
 }
 
 #tray *:first-child {
-  border-left: none;
+	border-left: none;
 }
 
 #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language{
-  margin: 4px 2px;
-  padding: 0 8px;
-  background-color: @surface1;
-  border-radius: 4px;
-  min-width: 15px;
+	margin: 4px 2px 5px;
+	padding: 0 8px;
+	background-color: @surface0;
+	border-radius: 4px;
+	min-width: 15px;
 }
 
-#pulseaudio.muted {
-  color: @red;
+
+#battery.charging, #battery.plugged {
+    color: @sapphire;
+}
+
+#battery.critical:not(.charging) {
+    color: @pink;
 }
 
 #pulseaudio.bluetooth {
-  color: @blue;
+	color: @sapphire;
+}
+
+#pulseaudio.muted {
+	color: @pink;
 }
 
 #clock {
-  margin-left: 0px;
-  margin-right: 4px;
-  background-color: transparent;
+	margin-left: 0px;
+	margin-right: 4px;
+	background-color: transparent;
+	color: @pink;
 }
 
 #temperature.critical {
-  color: @lavender;
+	color: @pink;
 }
 
 #window {
-  font-size: 0.9em;
+	font-size: 0.9em;
 	font-weight: 400;
 	font-family: sans-serif;
+	color: @text;
 }
 
 #language {
