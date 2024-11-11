@@ -8,8 +8,8 @@
     fg-col2: #f38ba8;
     grey: #6c7086;
 
-    width: 800;
-    font: "NotoSansM Nerd Font Mono 12";
+    width: 1000;
+    font: "NotoSansM Nerd Font Mono 14";
 }
 
 element-text, element-icon , mode-switcher {
@@ -18,8 +18,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
-    border: 3px;
+    height: 420;
+    border: 5px;
     border-color: @border-col;
     background-color: @bg-col;
 }
@@ -58,14 +58,14 @@ entry {
 listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
-    margin: 20 0px 0px 20px;
+    margin: 20px 0px 0px 20px;
     columns: 1;
     lines: 10;
     background-color: @bg-col;
 }
 
 element {
-    padding: 3px;
+    padding: 5px;
     background-color: @bg-col;
     text-color: @fg-col  ;
 }
@@ -82,7 +82,7 @@ element selected {
 
 mode-switcher {
     spacing: 0;
-  }
+}
 
 button {
     padding: 10px;
