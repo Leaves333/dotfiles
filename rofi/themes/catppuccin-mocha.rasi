@@ -8,8 +8,8 @@
     fg-col2: #f38ba8;
     grey: #6c7086;
 
-    width: 800;
-    font: "NotoSansM Nerd Font Mono 12";
+    width: 1200;
+    font: "NotoSansM Nerd Font Mono 16";
 }
 
 element-text, element-icon , mode-switcher {
@@ -18,7 +18,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
+    height: 600;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -65,7 +65,7 @@ listview {
 }
 
 element {
-    padding: 3px;
+    padding: 6px;
     background-color: @bg-col;
     text-color: @fg-col  ;
 }
