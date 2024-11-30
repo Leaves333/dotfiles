@@ -55,7 +55,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -96,7 +96,14 @@ vim.keymap.set("n", "<A-t>", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<A-d>", ":ObsidianToday<CR>")
 vim.keymap.set("n", "<A-b>", ":ObsidianBacklinks<CR>")
 
--- set obsidian.nvim keybinds
+-- quick command to look up todos
+vim.api.nvim_create_user_command(
+	"Todo",
+	":lua require('telescope.builtin').live_grep({default_text='#todo', glob_pattern='!todo.md'})",
+	{}
+)
+
+-- set undotree keybinds
 vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
 
 -- Diagnostic keymaps
