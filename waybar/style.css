@@ -6,7 +6,7 @@
 }
 
 #waybar {
-	font-family: 'Noto Sans M Nerd Font Mono', sans-serif;
+	font-family: 'CaskaydiaMono Nerd Font Mono', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
 	color: @text;

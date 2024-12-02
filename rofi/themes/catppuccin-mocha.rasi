@@ -8,8 +8,8 @@
     fg-col2: #f38ba8;
     grey: #6c7086;
 
-    width: 1200;
-    font: "NotoSansM Nerd Font Mono 16";
+    width: 1000;
+    font: "CaskaydiaMono Nerd Font Mono 14";
 }
 
 element-text, element-icon , mode-switcher {
