@@ -12,7 +12,6 @@ fi
 
 # add cargo to path
 PATH="$PATH:$HOME/.cargo/bin/"
-
 export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -30,9 +29,14 @@ unset rc
 
 # aliases
 alias bcsoundcore="bluetoothctl connect AC:12:2F:92:58:E3"
+alias clk="clock-rs"
+
+weather() {
+	curl "wttr.in/$@"
+}
 
 # set cargo env???
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # init zoxide
 eval "$(zoxide init --cmd cd bash)"
