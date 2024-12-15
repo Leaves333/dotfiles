@@ -32,13 +32,11 @@ vim.opt.showmode = false
 -- Enable break indent
 vim.opt.breakindent = true
 
--- force tabs to be 4 spaces?
+-- set tabs to be 4 spaces instead of a tab char
+-- vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-
--- enable hiding characters for obsidian.nvim to function
--- vim.o.conceallevel = 1
+vim.o.expandtab = true
 
 -- Save undo history
 vim.opt.undofile = true
