@@ -32,7 +32,7 @@ alias bcsoundcore="bluetoothctl connect AC:12:2F:92:58:E3"
 alias clk="clock-rs"
 
 weather() {
-	curl "wttr.in/$@"
+	curl "wttr.in/$@?m"
 }
 
 # set cargo env???
