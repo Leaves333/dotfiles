@@ -74,12 +74,27 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
 
+-- disable line numbers in nvim terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end,
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
 -- clipboard shortcuts
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
+
+-- set undotree keybinds
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
+
+-- omni-complete keybinds
+vim.keymap.set("i", "<C-Space>", "<C-x><C-o>")
 
 -- remap H and L to start/end of line
 -- vim.keymap.set("n", "H", "_")
@@ -100,9 +115,6 @@ vim.api.nvim_create_user_command(
 	":lua require('telescope.builtin').live_grep({default_text='#todo', glob_pattern='!todo.md'})",
 	{}
 )
-
--- set undotree keybinds
-vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -396,7 +408,7 @@ require("lazy").setup({
 			-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
 			-- and elegantly composed help section, `:help lsp-vs-treesitter`
 
-			--  This function gets run when an LSP attaches to a particular buffer.
+			--  This function gets run when an LSP attaches to a particular buffer.ini
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 			--    function will be executed to configure the current buffer
@@ -689,13 +701,13 @@ require("lazy").setup({
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping.select_next_item(),
-					["<S-Tab>"] = cmp.mapping.select_prev_item(),
+					-- ["<Tab>"] = cmp.mapping.select_next_item(),
+					-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
-					["<C-Space>"] = cmp.mapping.complete({}),
+					["<C-,>"] = cmp.mapping.complete({}),
 
 					-- Think of <c-l> as moving to the right of your snippet expansion.
 					--  So if you have a snippet that's like:
@@ -706,12 +718,12 @@ require("lazy").setup({
 					-- <c-l> will move you to the right of each of the expansion locations.
 					-- <c-h> is similar, except moving you backwards.
 					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
+						if luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
 						end
 					end, { "i", "s" }),
 					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
+						if luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						end
 					end, { "i", "s" }),
