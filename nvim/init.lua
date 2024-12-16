@@ -33,7 +33,7 @@ vim.opt.showmode = false
 vim.opt.breakindent = true
 
 -- set tabs to be 4 spaces instead of a tab char
--- vim.o.tabstop = 4
+vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -96,6 +96,10 @@ vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
 -- omni-complete keybinds
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>")
 
+-- quick-fix list stuff
+vim.keymap.set("n", "<A-j>", ":cnext<CR>")
+vim.keymap.set("n", "<A-k>", ":cprev<CR>")
+
 -- remap H and L to start/end of line
 -- vim.keymap.set("n", "H", "_")
 -- vim.keymap.set("n", "L", "$")
@@ -117,7 +121,7 @@ vim.api.nvim_create_user_command(
 )
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
