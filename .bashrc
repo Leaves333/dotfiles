@@ -35,6 +35,10 @@ weather() {
 	curl "wttr.in/$@?m"
 }
 
+cht() {
+	curl "cheat.sh/$@"
+}
+
 # set cargo env???
 # . "$HOME/.cargo/env"
 
