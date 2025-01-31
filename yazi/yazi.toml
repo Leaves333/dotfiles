@@ -8,10 +8,14 @@ edit = [
 image = [
 	{ run = 'imv-dir "$@"', orphan = true },
 ]
+pdf = [
+	{ run = 'zathura "$@"', orphan = true },
+]
 
 [open]
 prepend_rules = [
 	{ mime = "image/*", use = "image" },
+	{ mime = "application/pdf", use = "pdf" },
 ]
 
 [preview]
