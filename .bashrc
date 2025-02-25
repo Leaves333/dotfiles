@@ -30,6 +30,7 @@ unset rc
 # aliases
 alias bcsoundcore="bluetoothctl connect AC:12:2F:92:58:E3"
 alias clk="clock-rs"
+alias ls="ls --color"
 
 weather() {
 	curl "wttr.in/$@?m"
@@ -42,8 +43,8 @@ cht() {
 # set cargo env???
 # . "$HOME/.cargo/env"
 
-# init zoxide
-eval "$(zoxide init --cmd cd bash)"
+# kitty doesn't work nice with ssh
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 # init starship
 eval "$(starship init bash)"
@@ -51,5 +52,5 @@ eval "$(starship init bash)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
-# kitty doesn't work nice with ssh
-[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+# init zoxide
+eval "$(zoxide init --cmd cd bash)"
