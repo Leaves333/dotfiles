@@ -538,10 +538,10 @@ require("lazy").setup({
 				rust_analyzer = {},
 
 				-- webdev things
-				html = {},
-				ts_ls = {},
-				cssls = {},
-				tailwindcss = {},
+				-- html = {},
+				-- ts_ls = {},
+				-- cssls = {},
+				-- tailwindcss = {},
 
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--

@@ -95,7 +95,7 @@
 #window {
 	font-size: 1em;
 	font-weight: 400;
-	font-family: sans-serif;
+	/*font-family: sans-serif;*/
 	color: @text;
 }
 
