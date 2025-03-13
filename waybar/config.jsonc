@@ -13,7 +13,8 @@
 		//"custom/updates"
 	],
 	"modules-center": [
-		"hyprland/window"
+		//"hyprland/window"
+		"clock"
 	],
 	"modules-right": [
 		//"hyprland/submap",
@@ -24,7 +25,6 @@
 		"temperature",
 		"battery",
 		"tray",
-		"clock"
 	],
 	// Modules configuration
 	"hyprland/workspaces": {
@@ -116,7 +116,7 @@
 	"clock": {
 		// "timezone": "America/New_York",
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": "{:%a %Y-%m-%d}"
+		"format-alt": "{:%a %Y-%m-%d %H:%M}"
 	},
 	"cpu": {
 		"format": "{usage}% ",
