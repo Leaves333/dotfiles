@@ -1,7 +1,5 @@
 format = '''
-$username\\
-$hostname\\
-$all
+$username$hostname$all
 '''
 
 add_newline = false
