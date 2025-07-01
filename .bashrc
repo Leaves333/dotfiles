@@ -31,11 +31,9 @@ fi
 unset rc
 
 # aliases
-alias bcsoundcore="bluetoothctl connect AC:12:2F:92:58:E3"
 alias clk="clock-rs"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-alias plana="mpvpaper '*' /home/leaves/Videos/backgrounds/plana.mp4 -f -o 'no-audio loop'"
 
 weather() {
 	curl "wttr.in/$@?m"
