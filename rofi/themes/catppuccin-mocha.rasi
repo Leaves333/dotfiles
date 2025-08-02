@@ -9,7 +9,7 @@
     grey: #6c7086;
 
     width: 1000;
-    font: "CaskaydiaMono Nerd Font Mono 14";
+    font: "CaskaydiaMono Nerd Font Mono 18";
 }
 
 element-text, element-icon , mode-switcher {
@@ -18,7 +18,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 600;
+    height: 530;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
