@@ -112,9 +112,33 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- set obsidian.nvim keybinds
-vim.keymap.set("n", "<A-t>", ":ObsidianTemplate<CR>")
-vim.keymap.set("n", "<A-d>", ":ObsidianToday<CR>")
-vim.keymap.set("n", "<A-b>", ":ObsidianBacklinks<CR>")
+-- these commands are only run on the "ObsidianNoteEnter" event
+-- so they should only be active in the obsidian vault.
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "ObsidianNoteEnter",
+	callback = function(ev)
+		vim.keymap.set("n", "<A-t>", "<cmd>Obsidian template<CR>")
+		vim.keymap.set("n", "<A-d>", "<cmd>Obsidian today<CR>")
+		vim.keymap.set("n", "<A-b>", "<cmd>Obsidian backlinks<CR>")
+
+		vim.keymap.set("n", "<leader>ch", function()
+			require("obsidian.api").toggle_checkbox({ " ", "x" })
+		end, {
+			buffer = ev.buf,
+			desc = "Toggle checkbox",
+		})
+
+		-- remap smart_action to alt f
+		vim.keymap.set("n", "<A-f>", function()
+			print("hi")
+			require("obsidian.api").smart_action()
+		end, {
+			buffer = ev.buf,
+		})
+		vim.keymap.del("n", "<CR>", { buffer = ev.buf })
+	end,
+})
 
 -- set folding keybinds
 -- vim.keymap.set("n", "<leader>h", function()
