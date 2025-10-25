@@ -4,6 +4,19 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	-- oil nvim!!!
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
+
 	-- folding plugin
 	{
 		"chrisgrieser/nvim-origami",
@@ -96,6 +109,10 @@ return {
 				{
 					name = "obsidian",
 					path = "~/Obsidian",
+				},
+				{
+					name = "linalg",
+					path = "~/Code/linalg/",
 				},
 			},
 
