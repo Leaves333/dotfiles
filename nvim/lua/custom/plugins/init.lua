@@ -4,6 +4,53 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	-- oil nvim!!!
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
+
+	-- folding plugin
+	{
+		"chrisgrieser/nvim-origami",
+		event = "VeryLazy",
+		opts = {
+			useLspFoldsWithTreesitterFallback = true,
+			pauseFoldsOnSearch = true,
+			foldtext = {
+				enabled = true,
+				padding = 4,
+				lineCount = {
+					template = "%d lines", -- `%d` is replaced with the number of folded lines
+					hlgroup = "Comment",
+				},
+				diagnosticsCount = true, -- uses hlgroups and icons from `vim.diagnostic.config().signs`
+				gitsignsCount = true, -- requires `gitsigns.nvim`
+			},
+			autoFold = {
+				enabled = false,
+				kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
+			},
+			foldKeymaps = {
+				setup = false, -- modifies `h` and `l`
+				hOnlyOpensOnFirstColumn = false,
+			},
+		},
+
+		-- recommended: disable vim's auto-folding
+		init = function()
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+		end,
+	},
+
 	-- vimtex???
 	{
 		"lervag/vimtex",
@@ -62,6 +109,10 @@ return {
 				{
 					name = "obsidian",
 					path = "~/Obsidian",
+				},
+				{
+					name = "linalg",
+					path = "~/Code/linalg/",
 				},
 			},
 

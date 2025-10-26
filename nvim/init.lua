@@ -90,6 +90,10 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
 
+-- remap j and k
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+
 -- set undotree keybinds
 vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>")
 
@@ -112,6 +116,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<A-t>", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<A-d>", ":ObsidianToday<CR>")
 vim.keymap.set("n", "<A-b>", ":ObsidianBacklinks<CR>")
+vim.keymap.set("n", "<A-r>", ":ObsidianRename<CR>")
+vim.keymap.set("n", "<A-f>", ":ObsidianTags<CR>")
+
+-- set folding keybinds
+vim.keymap.set("n", "<leader>h", "zc")
+vim.keymap.set("n", "<leader>l", "zo")
 
 -- quick command to look up todos
 vim.api.nvim_create_user_command(
@@ -533,7 +543,7 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
-				gopls = {},
+				-- gopls = {},
 				pyright = {},
 				rust_analyzer = {},
 
