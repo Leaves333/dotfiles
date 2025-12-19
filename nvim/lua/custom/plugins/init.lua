@@ -110,10 +110,6 @@ return {
 					name = "obsidian",
 					path = "~/Obsidian",
 				},
-				{
-					name = "linalg",
-					path = "~/Code/linalg/",
-				},
 			},
 
 			ui = {
