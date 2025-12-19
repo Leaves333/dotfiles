@@ -1,71 +1,86 @@
 @import "mocha.css";
 
 * {
-  transition: none;
-  box-shadow: none;
+    transition: none;
+    box-shadow: none;
 }
 
 #waybar {
-	font-family: 'CaskaydiaMono Nerd Font Mono', sans-serif;
-	font-size: 1.3em;
-	font-weight: 400;
-	color: @text;
-	background: @mantle;
+    /* font-family: 'CaskaydiaMono Nerd Font Mono', sans-serif; */
+    font-family: 'RecMonoSmCasual Nerd Font Mono', sans-serif;
+    font-size: 1.07em;
+    font-weight: 400;
+    color: @text;
+    background: @mantle;
 }
 
 #workspaces {
-	margin: 0 4px;
+    margin: 0 4px;
 }
 
 #workspaces button {
-	margin: 4px 0px 5px;
-	padding: 0 6px;
-	color: @pink;
+    margin: 4px 0px 4px;
+    padding: 0 4px;
+    color: @pink;
 }
 
-#workspaces button.visible {
-}
+#workspaces button.visible {}
 
 #workspaces button.active {
-	border-radius: 4px;
-	color: @mantle;
-	background-color: @pink;
+    border-radius: 4px;
+    color: @mantle;
+    background-color: @pink;
 }
 
 #workspaces button:hover {
-	border-radius: 4px;
-	color: @mantle;
+    border-radius: 4px;
+    color: @mantle;
 }
 
 #workspaces button.urgent {
-  color: @sapphire;
+    color: @sapphire;
 }
 
 #tray {
-	margin: 4px 4px 5px 4px;
-	border-radius: 4px;
-	background-color: @surface0;
+    margin: 4px 4px 5px 4px;
+    border-radius: 4px;
+    background-color: @surface0;
 }
 
 #tray * {
-	padding: 0 6px;
-	border-left: 1px solid @mantle;
+    padding: 0 6px;
+    border-left: 1px solid @mantle;
 }
 
 #tray *:first-child {
-	border-left: none;
+    border-left: none;
 }
 
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language{
-	margin: 4px 2px 5px;
-	padding: 0 8px;
-	background-color: @surface0;
-	border-radius: 4px;
-	min-width: 15px;
+#mode,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#backlight,
+#custom-storage,
+#custom-updates,
+#custom-weather,
+#custom-mail,
+#clock,
+#temperature,
+#language {
+    margin: 4px 2px 5px;
+    padding: 0 8px;
+    background-color: @surface0;
+    border-radius: 4px;
+    min-width: 15px;
 }
 
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: @sapphire;
 }
 
@@ -74,33 +89,33 @@
 }
 
 #pulseaudio.bluetooth {
-	color: @sapphire;
+    color: @sapphire;
 }
 
 #pulseaudio.muted {
-	color: @pink;
+    color: @pink;
 }
 
 #clock {
-	margin-left: 0px;
-	margin-right: 4px;
-	background-color: transparent;
-	color: @pink;
+    margin-left: 0px;
+    margin-right: 4px;
+    background-color: transparent;
+    color: @pink;
 }
 
 #temperature.critical {
-	color: @pink;
+    color: @pink;
 }
 
 #window {
-	font-size: 1em;
-	font-weight: 400;
-	/*font-family: sans-serif;*/
-	color: @text;
+    font-size: 1em;
+    font-weight: 400;
+    /*font-family: sans-serif;*/
+    color: @text;
 }
 
 #language {
-	font-size: 0.9em;
-	font-weight: 500;
-	letter-spacing: -1px;
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: -1px;
 }
