@@ -8,9 +8,9 @@
     fg-col2: #f38ba8;
     grey: #6c7086;
 
-    width: 1000;
+    width: 1200;
     // font: "CaskaydiaMono Nerd Font Mono 18";
-    font: "RecMonoSmCasual Nerd Font Mono 16";
+    font: "RecMonoSmCasual Nerd Font Mono 20";
 }
 
 element-text, element-icon , mode-switcher {
@@ -19,7 +19,7 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 550;
+    height: 650;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
