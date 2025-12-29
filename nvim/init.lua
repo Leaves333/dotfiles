@@ -123,6 +123,10 @@ vim.keymap.set("n", "<A-f>", ":ObsidianTags<CR>")
 vim.keymap.set("n", "<leader>h", "zc")
 vim.keymap.set("n", "<leader>l", "zo")
 
+-- set markview keybinds
+vim.keymap.set("n", "<leader>mm", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
+vim.keymap.set("n", "<leader>mp", "<CMD>Markview splitToggle<CR>", { desc = "Toggles `splitview` for current buffer." })
+
 -- quick command to look up todos
 vim.api.nvim_create_user_command(
 	"Todo",
@@ -252,6 +256,7 @@ require("lazy").setup({
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>m", group = "[M]arkview" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			})
 		end,

@@ -4,6 +4,22 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	-- a markdown / latex previewer
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+
+		-- do not enable previews by default
+		config = function()
+			require("markview").setup({
+				preview = { enable = false },
+			})
+		end,
+
+		-- Completion for `blink.cmp`
+		-- dependencies = { "saghen/blink.cmp" },
+	},
+
 	-- oil nvim!!!
 	{
 		"stevearc/oil.nvim",
