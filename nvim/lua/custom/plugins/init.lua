@@ -38,11 +38,16 @@ return {
 		"chrisgrieser/nvim-origami",
 		event = "VeryLazy",
 		opts = {
-			useLspFoldsWithTreesitterFallback = true,
+			useLspFoldsWithTreesitterFallback = {
+				enabled = true,
+				foldmethodIfNeitherIsAvailable = "indent", ---@type string|fun(bufnr: number): string
+			},
 			pauseFoldsOnSearch = true,
 			foldtext = {
 				enabled = true,
-				padding = 4,
+				padding = {
+					width = 4,
+				},
 				lineCount = {
 					template = "%d lines", -- `%d` is replaced with the number of folded lines
 					hlgroup = "Comment",
@@ -99,24 +104,14 @@ return {
 	},
 
 	{
-		"epwalsh/obsidian.nvim",
+		"obsidian-nvim/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
 		lazy = true,
 		ft = "markdown",
-		-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-		-- event = {
-		-- 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		-- 	-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-		-- 	-- refer to `:h file-pattern` for more examples
-		-- 	"BufReadPre home/leaves/Obsidian/*.md",
-		-- 	"BufNewFile home/leaves/Obsidian/*.md",
-		-- },
 
 		dependencies = {
 			-- Required.
 			"nvim-lua/plenary.nvim",
-
-			-- see below for full list of optional dependencies 👇
 		},
 
 		opts = {
@@ -134,10 +129,8 @@ return {
 
 			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
 			completion = {
-				-- Set to false to disable completion.
-				nvim_cmp = true,
-				-- Trigger completion at 2 chars.
-				min_chars = 2,
+				blink = true,
+				min_chars = 2, -- Trigger completion at 2 chars.
 			},
 
 			templates = {
@@ -146,9 +139,9 @@ return {
 				time_format = "%H:%M",
 			},
 
-			-- Optional, boolean or a function that takes a filename and returns a boolean.
-			-- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-			disable_frontmatter = true,
+			frontmatter = {
+				enabled = false,
+			},
 
 			daily_notes = {
 				-- Optional, if you keep daily notes in a separate directory.
@@ -161,32 +154,6 @@ return {
 				default_tags = { "daily-notes" },
 				-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
 				template = "templates/daily.md",
-			},
-
-			-- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
-			-- way then set 'mappings = {}'.
-			mappings = {
-				-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-				["gf"] = {
-					action = function()
-						return require("obsidian").util.gf_passthrough()
-					end,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
-				-- Toggle check-boxes.
-				["<leader>ch"] = {
-					action = function()
-						return require("obsidian").util.toggle_checkbox()
-					end,
-					opts = { buffer = true },
-				},
-				-- Smart action depending on context, either follow link or toggle checkbox.
-				-- ["<cr>"] = {
-				-- 	action = function()
-				-- 		return require("obsidian").util.smart_action()
-				-- 	end,
-				-- 	opts = { buffer = true, expr = true },
-				-- },
 			},
 
 			picker = {
@@ -207,9 +174,8 @@ return {
 					insert_tag = "<C-l>",
 				},
 			},
+
+			legacy_commands = false,
 		},
 	},
-
-	-- exciting vimbegood action !!!!
-	-- "ThePrimeagen/vim-be-good",
 }
