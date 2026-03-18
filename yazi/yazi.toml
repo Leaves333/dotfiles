@@ -1,20 +1,21 @@
-# [manager]
-# show_hidden = true
-
 [opener]
 edit = [
-	{ run = 'nvim "$@"', block = true },
+	{ run = 'nvim %s', block = true },
 ]
 image = [
-	{ run = 'imv-dir "$@"', orphan = true },
+	{ run = '~/.config/yazi/open_image.sh %s', orphan = true },
+]
+video = [
+	{ run = 'mpv %s', orphan = true },
 ]
 pdf = [
-	{ run = 'zathura "$@"', orphan = true },
+	{ run = 'zathura %s', orphan = true },
 ]
 
 [open]
 prepend_rules = [
 	{ mime = "image/*", use = "image" },
+	{ mime = "video/*", use = "video" },
 	{ mime = "application/pdf", use = "pdf" },
 ]
 
