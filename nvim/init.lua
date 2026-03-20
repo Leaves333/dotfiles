@@ -123,9 +123,11 @@ vim.api.nvim_create_autocmd("User", {
 		})
 		vim.keymap.set("n", "<A-t>", "<cmd>Obsidian template<CR>")
 		vim.keymap.set("n", "<A-d>", "<cmd>Obsidian today<CR>")
+		vim.keymap.set("n", "<A-w>", "<cmd>Obsidian dailies -7 0<CR>")
 		vim.keymap.set("n", "<A-b>", "<cmd>Obsidian backlinks<CR>")
 		vim.keymap.set("n", "<A-r>", "<cmd>Obsidian rename<CR>")
 		vim.keymap.set("n", "<A-f>", "<cmd>Obsidian tags<CR>")
+		vim.keymap.set("n", "<A-h>", "<cmd>e what.md<CR>")
 		vim.keymap.set("n", "gf", "<cmd>Obsidian follow_link<CR>")
 	end,
 })
