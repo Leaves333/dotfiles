@@ -140,7 +140,17 @@ return {
 			},
 
 			frontmatter = {
-				enabled = false,
+				enabled = true,
+				func = function(note)
+					local out = { id = note.id, aliases = note.aliases }
+					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+						for k, v in pairs(note.metadata) do
+							out[k] = v
+						end
+					end
+					return out
+				end,
+				sort = { "id", "aliases" },
 			},
 
 			daily_notes = {
