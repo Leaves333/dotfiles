@@ -104,10 +104,6 @@ vim.keymap.set("i", "<C-Space>", "<C-x><C-o>")
 vim.keymap.set("n", "<A-j>", ":cnext<CR>")
 vim.keymap.set("n", "<A-k>", ":cprev<CR>")
 
--- remap H and L to start/end of line
--- vim.keymap.set("n", "H", "_")
--- vim.keymap.set("n", "L", "$")
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -128,13 +124,10 @@ vim.api.nvim_create_autocmd("User", {
 		vim.keymap.set("n", "<A-r>", "<cmd>Obsidian rename<CR>")
 		vim.keymap.set("n", "<A-f>", "<cmd>Obsidian tags<CR>")
 		vim.keymap.set("n", "<A-h>", "<cmd>e what.md<CR>")
+		vim.keymap.set("n", "<A-s>", "<cmd>e scratchpad.md<CR>")
 		vim.keymap.set("n", "gf", "<cmd>Obsidian follow_link<CR>")
 	end,
 })
-
--- set folding keybinds
-vim.keymap.set("n", "<leader>h", "zc")
-vim.keymap.set("n", "<leader>l", "zo")
 
 -- set markview keybinds
 vim.keymap.set("n", "<leader>mm", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
@@ -285,7 +278,6 @@ require("lazy").setup({
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
-		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -481,7 +473,7 @@ require("lazy").setup({
 					if
 						not vim.g.vscode
 						and client
-						and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
+						and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
 					then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -510,7 +502,7 @@ require("lazy").setup({
 					-- code, if the language server you are using supports them
 					--
 					-- This may be unwanted, since they displace some of your code
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
@@ -617,7 +609,7 @@ require("lazy").setup({
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
+				local disable_filetypes = { c = true, cpp = true, html = true }
 				return {
 					timeout_ms = 500,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -698,6 +690,10 @@ require("lazy").setup({
 				["<C-j>"] = { "show_signature", "hide_signature", "fallback" },
 				["<C-l>"] = { "snippet_forward", "fallback" },
 				["<C-h>"] = { "snippet_backward", "fallback" },
+
+				-- disable a keymap from the preset
+				["<Tab>"] = false, -- or {}
+				["<S-Tab>"] = false, -- or {}
 			},
 
 			appearance = {
@@ -821,52 +817,86 @@ require("lazy").setup({
 	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		build = ":TSUpdate",
-		opts = {
-			ensure_installed = {
+		-- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
+		config = function()
+			-- ensure basic parser are installed
+			local parsers = {
 				"bash",
 				"c",
+				"cpp",
+				"css",
 				"diff",
+				"desktop",
+				"fish",
+				"gitcommit",
+				"haskell",
 				"html",
+				"java",
+				"javascript",
 				"json",
 				"lua",
-				"luadoc",
 				"markdown",
 				"markdown_inline",
-				"query",
+				"sql",
 				"vim",
 				"vimdoc",
-				"java",
-				"cpp",
 				"python",
 				"rust",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-				disable = { "latex" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
-		config = function(_, opts)
-			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+			}
+			require("nvim-treesitter").install(parsers)
 
-			-- Prefer git instead of curl in order to improve connectivity in some environments
-			require("nvim-treesitter.install").prefer_git = true
-			---@diagnostic disable-next-line: missing-fields
-			require("nvim-treesitter.configs").setup(opts)
+			---@param buf integer
+			---@param language string
+			local function treesitter_try_attach(buf, language)
+				-- don't use treesitter for latex files, vimtex should handle it.
+				if language == "latex" then
+					return
+				end
 
-			-- There are additional nvim-treesitter modules that you can use to interact
-			-- with nvim-treesitter. You should go explore a few and see what interests you:
-			--
-			--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+				-- check if parser exists and load it
+				if not vim.treesitter.language.add(language) then
+					return
+				end
+				-- enables syntax highlighting and other treesitter features
+				vim.treesitter.start(buf, language)
+
+				-- enables treesitter based folds
+				-- for more info on folds see `:help folds`
+				-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+				-- vim.wo.foldmethod = 'expr'
+
+				-- enables treesitter based indentation
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
+
+			local available_parsers = require("nvim-treesitter").get_available()
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function(args)
+					local buf, filetype = args.buf, args.match
+
+					local language = vim.treesitter.language.get_lang(filetype)
+					if not language then
+						return
+					end
+
+					local installed_parsers = require("nvim-treesitter").get_installed("parsers")
+
+					if vim.tbl_contains(installed_parsers, language) then
+						-- enable the parser if it is installed
+						treesitter_try_attach(buf, language)
+					elseif vim.tbl_contains(available_parsers, language) then
+						-- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
+						require("nvim-treesitter").install(language):await(function()
+							treesitter_try_attach(buf, language)
+						end)
+					else
+						-- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+						treesitter_try_attach(buf, language)
+					end
+				end,
+			})
 		end,
 	},
 

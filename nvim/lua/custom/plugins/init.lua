@@ -60,8 +60,7 @@ return {
 				kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
 			},
 			foldKeymaps = {
-				setup = false, -- modifies `h` and `l`
-				hOnlyOpensOnFirstColumn = false,
+				setup = false,
 			},
 		},
 
@@ -130,7 +129,7 @@ return {
 			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
 			completion = {
 				blink = true,
-				min_chars = 2, -- Trigger completion at 2 chars.
+				-- min_chars = 2, -- Trigger completion at 2 chars.
 			},
 
 			templates = {
