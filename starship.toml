@@ -4,6 +4,20 @@ $username$hostname$all
 
 add_newline = false
 
+# jj-starship
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
+
+[git_branch]
+disabled = true
+symbol = " "
+
+[git_status]
+disabled = true
+
+
 [username]
 style_user = 'bold blue'
 style_root = 'bold red'
@@ -56,9 +70,6 @@ symbol = " "
 
 [gcloud]
 symbol = "󰅟 "
-
-[git_branch]
-symbol = " "
 
 [git_commit]
 tag_symbol = '  '
