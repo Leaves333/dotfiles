@@ -868,7 +868,10 @@ require("lazy").setup({
 				-- vim.wo.foldmethod = 'expr'
 
 				-- enables treesitter based indentation
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				-- (for files) that are not ocaml
+				if language ~= "ocaml" then
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 			end
 
 			local available_parsers = require("nvim-treesitter").get_available()

@@ -4,6 +4,14 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	-- ocaml indenting?
+	{
+		{
+			"ocaml/vim-ocaml",
+			lazy = false,
+		},
+	},
+
 	-- a markdown / latex previewer
 	{
 		"OXY2DEV/markview.nvim",
