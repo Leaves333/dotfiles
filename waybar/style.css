@@ -19,9 +19,18 @@
 }
 
 #workspaces button {
-    margin: 4px 0px 5px;
-    padding: 0 6px;
+    margin: 4px 0px 4px;
+    padding: 0 0px;
     color: @pink;
+
+    min-width: 28px;
+    min-height: 28px;
+
+    background: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 #workspaces button.visible {}
@@ -35,6 +44,7 @@
 #workspaces button:hover {
     border-radius: 4px;
     color: @mantle;
+    background-color: @pink;
 }
 
 #workspaces button.urgent {

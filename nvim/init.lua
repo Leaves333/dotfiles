@@ -113,6 +113,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.api.nvim_create_autocmd("User", {
 	pattern = "ObsidianNoteEnter",
 	callback = function(ev)
+		-- unset smart action keybind
+		vim.keymap.del("n", "<CR>", { buffer = true })
+
+		-- set our ucstom keybinds
 		vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<CR>", {
 			buffer = true,
 			desc = "Toggle checkbox",
@@ -129,6 +133,11 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
+-- quick keybind for the current date
+vim.keymap.set("n", "<leader>dp", function()
+	vim.api.nvim_put({ os.date("%Y-%m-%d") }, "c", true, true)
+end, { desc = "Insert current date" })
+
 -- set markview keybinds
 vim.keymap.set("n", "<leader>mm", "<CMD>Markview<CR>", { desc = "Toggles `markview` previews globally." })
 vim.keymap.set("n", "<leader>mp", "<CMD>Markview splitToggle<CR>", { desc = "Toggles `splitview` for current buffer." })
@@ -139,6 +148,19 @@ vim.api.nvim_create_user_command(
 	":lua require('telescope.builtin').live_grep({default_text='#todo', glob_pattern='!todo.md'})",
 	{}
 )
+
+-- configure haskell language server to us fourmolu
+vim.lsp.config("hls", {
+	settings = {
+		haskell = {
+			formattingProvider = "fourmolu",
+			plugin = {
+				rename = { config = { crossModule = true } },
+			},
+		},
+	},
+})
+vim.lsp.enable("hls")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -529,7 +551,6 @@ require("lazy").setup({
 			local servers = {
 				clangd = {},
 				-- gopls = {},
-				pyright = {},
 				rust_analyzer = {},
 
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
