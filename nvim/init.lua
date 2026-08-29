@@ -86,6 +86,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- disable line wrap + horizontal scrolling
+vim.opt.wrap = false
+vim.keymap.set("n", "zh", "zH")
+vim.keymap.set("n", "zl", "zL")
+
 -- clipboard shortcuts
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
@@ -161,6 +166,18 @@ vim.lsp.config("hls", {
 	},
 })
 vim.lsp.enable("hls")
+
+-- configure tinymist
+vim.lsp.config("tinymist", {
+	settings = {
+		formatterMode = "typstyle",
+		formatterProseWrap = true,
+		formatterPrintWidth = 80,
+		formatterIndentSize = 4,
+		exportPdf = "onSave",
+	},
+})
+vim.lsp.enable("tinymist")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -550,6 +567,7 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
+				tinymist = {},
 				-- gopls = {},
 				rust_analyzer = {},
 
