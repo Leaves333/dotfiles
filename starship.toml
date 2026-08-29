@@ -4,19 +4,19 @@ $username$hostname$all
 
 add_newline = false
 
-# jj-starship
+# add custom prompt for jujutsu
 [custom.jj]
 when = "jj-starship detect"
-shell = ["jj-starship"]
+shell = ["jj-starship", "--jj-symbol", " ", "--git-symbol", "", "--no-git-id"]
 format = "$output "
 
+# disable git, use custom jj instead
 [git_branch]
-disabled = true
 symbol = " "
+disabled = true
 
 [git_status]
 disabled = true
-
 
 [username]
 style_user = 'bold blue'

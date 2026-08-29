@@ -8,7 +8,7 @@
 #waybar {
     /* font-family: 'CaskaydiaMono Nerd Font Mono', sans-serif; */
     font-family: 'RecMonoSmCasual Nerd Font Mono', sans-serif;
-    font-size: 1.07em;
+    font-size: 1.3em;
     font-weight: 400;
     color: @text;
     background: @mantle;
@@ -20,8 +20,17 @@
 
 #workspaces button {
     margin: 4px 0px 4px;
-    padding: 0 4px;
+    padding: 0 0px;
     color: @pink;
+
+    min-width: 28px;
+    min-height: 28px;
+
+    background: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 #workspaces button.visible {}
@@ -35,6 +44,7 @@
 #workspaces button:hover {
     border-radius: 4px;
     color: @mantle;
+    background-color: @pink;
 }
 
 #workspaces button.urgent {

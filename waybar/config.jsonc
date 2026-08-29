@@ -17,8 +17,6 @@
 		"clock"
 	],
 	"modules-right": [
-		//"hyprland/submap",
-		//"hyprland/language",
 		"pulseaudio",
 		"cpu",
 		"memory",
@@ -30,21 +28,21 @@
 	"hyprland/workspaces": {
 		"disable-scroll": true,
 		"on-click": "activate",
-		// "all-outputs": false,
-		// "format": "{name}: {icon}",
-		"format": "{name}",
+		"format": "{icon}",
 		"on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
 		"on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
-		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-			"5": "",
-			"urgent": "",
-			"focused": "",
-			"default": ""
-		}
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0"
+        }
 	},
 	"keyboard-state": {
 		"numlock": false,
