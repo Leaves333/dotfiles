@@ -23,9 +23,6 @@ return {
 				preview = { enable = false },
 			})
 		end,
-
-		-- Completion for `blink.cmp`
-		-- dependencies = { "saghen/blink.cmp" },
 	},
 
 	-- oil nvim!!!
@@ -132,12 +129,6 @@ return {
 
 			ui = {
 				enable = false,
-			},
-
-			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-			completion = {
-				blink = true,
-				-- min_chars = 2, -- Trigger completion at 2 chars.
 			},
 
 			templates = {
