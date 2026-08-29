@@ -13,6 +13,7 @@ set -gx PATH $PATH ~/.cargo/bin/ ~/.ghcup/bin ~/.local/bin/
 
 alias bcsoundcore "bluetoothctl connect AC:12:2F:92:58:E3"
 alias bcairpods "bluetoothctl connect 54:2A:43:6F:13:96"
+alias bckeyboard "bluetoothctl connect D8:3B:42:90:5A:F4"
 alias clk "clock-rs"
 alias ls "ls --color"
 alias jjpush "jj b a && jj git push"
@@ -86,3 +87,12 @@ function fzf-history-widget -d "Show command history"
 
   commandline -f repaint
 end
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/leaves/.opam/opam-init/init.fish' && source '/home/leaves/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+# END opam configuration

@@ -22,6 +22,7 @@ disabled = true
 style_user = 'bold blue'
 style_root = 'bold red'
 format = '[\[](white)[$user]($style)[@](bold blue)'
+# format = '[\[](white)[$user]($style)[\]](white) '
 show_always = true
 
 

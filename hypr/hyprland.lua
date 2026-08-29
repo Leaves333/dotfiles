@@ -8,7 +8,6 @@ local function rgba(hex, alpha)
 end
 
 local terminal = "kitty"
-local fileManager = "nautilus"
 local menu =
 	[[rofi -show-icons -icon-theme "Papirus" -theme "catppuccin-mocha" -show combi -modes combi -combi-modes "window,drun"]]
 local mainMod = "SUPER"
@@ -35,7 +34,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- Environment
--- hl.env("GDK_SCALE", "2")
+hl.env("GDK_SCALE", "1")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
@@ -84,7 +83,7 @@ hl.config({
 		},
 	},
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 	dwindle = {
 		preserve_split = true,
