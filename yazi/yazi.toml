@@ -1,18 +1,18 @@
 [opener]
 edit = [
-	{ run = 'nvim "$@"', block = true },
+	{ run = 'nvim %s', block = true },
 ]
 image = [
-	{ run = '~/.config/yazi/open_image.sh "$@"', orphan = true },
+	{ run = '~/.config/yazi/open_image.sh %s', orphan = true },
 ]
 video = [
-	{ run = 'mpv "$@"', orphan = true },
+	{ run = 'mpv %s', orphan = true },
 ]
 audio = [
-	{ run = 'mpv --force-window=yes "$@"', orphan = true },
+	{ run = 'mpv --force-window=yes %s', orphan = true },
 ]
 pdf = [
-	{ run = 'zathura "$@"', orphan = true },
+	{ run = 'zathura %s', orphan = true },
 ]
 
 [open]
