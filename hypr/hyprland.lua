@@ -35,7 +35,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- Environment
-hl.env("GDK_SCALE", "2")
+-- hl.env("GDK_SCALE", "2")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
@@ -49,9 +49,9 @@ hl.config({
 		no_update_news = true,
 	},
 	general = {
-		gaps_in = 4,
-		gaps_out = 8,
-		border_size = 2,
+		gaps_in = 0,
+		gaps_out = 0,
+		border_size = 1,
 		col = {
 			active_border = {
 				colors = { rgba(colors.mauve, "ee"), rgba(colors.red, "ee") },
