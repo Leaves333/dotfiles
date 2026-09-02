@@ -848,8 +848,8 @@ require("lazy").setup({
 				"c",
 				"cpp",
 				"css",
-				"diff",
 				"desktop",
+				"diff",
 				"fish",
 				"gitcommit",
 				"haskell",
@@ -857,16 +857,43 @@ require("lazy").setup({
 				"java",
 				"javascript",
 				"json",
+				"latex",
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
+				"rust",
 				"sql",
 				"vim",
 				"vimdoc",
-				"python",
-				"rust",
+				"yaml",
 			}
 			require("nvim-treesitter").install(parsers)
+
+			-- Recognize *.flex files as Lex/Flex source.
+			vim.filetype.add({
+				extension = {
+					flex = "lex",
+				},
+			})
+
+			-- Register the third-party Bison Tree-sitter parser.
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					require("nvim-treesitter.parsers").bison = {
+						install_info = {
+							url = "https://github.com/lemonadern/tree-sitter-bison",
+							revision = "4a88ed93f9d71545634e3de42ce843a95119682a",
+							queries = "queries",
+						},
+						tier = 4,
+					}
+				end,
+			})
+
+			-- Neovim calls *.y files "yacc"; use the Bison parser for them.
+			vim.treesitter.language.register("bison", { "yacc" })
 
 			---@param buf integer
 			---@param language string
