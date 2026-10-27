@@ -7,8 +7,17 @@
 [user]
 	email = canchenli@gmail.com
 	name = Leaves333
+	signingkey = /home/leaves/.ssh/id_ed25519.pub
 
 [alias]
 lg = log --graph --oneline --decorate --all
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/leaves/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
