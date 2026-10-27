@@ -38,6 +38,17 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
+-- The built-in Typst indent script changes these buffer-local values to 2.
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "typst",
+	callback = function()
+		vim.bo.tabstop = 4
+		vim.bo.softtabstop = 4
+		vim.bo.shiftwidth = 4
+		vim.bo.expandtab = true
+	end,
+})
+
 -- Save undo history
 vim.opt.undofile = true
 
